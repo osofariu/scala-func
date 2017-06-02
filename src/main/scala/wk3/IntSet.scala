@@ -4,6 +4,4 @@ abstract class IntSet {
   def incl(v: Int): IntSet
   def contains(v: Int): Boolean
   def union(otherSet: IntSet) : IntSet
-  def toScalaSet : Set[Int]
-  def toString: String
 }

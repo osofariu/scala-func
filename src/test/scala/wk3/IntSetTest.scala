@@ -8,12 +8,15 @@ class IntSetTest extends path.FunSpec with Matchers {
   describe("IntSet operations") {
 
     it("adds elements of my set to a scala set") {
-      set1.toScalaSet.toArray shouldBe Array(10, 12, 14)
+      Array(10, 12, 14).foreach(v => set1.contains(v))
     }
 
     it("unions are ways of combining sets") {
-      set1.union(set2).toScalaSet.toArray.sorted shouldBe Array(8, 9, 10, 11, 12, 14, 20, 100)
-      set1.union(set3).toScalaSet.toArray.sorted shouldBe Array(8, 9, 10, 11, 12, 14, 20, 100)
+      val sets1_2 = set1.union(set2)
+      Array(8, 9, 10, 11, 12, 14, 20, 100).foreach(v => assert(sets1_2.contains(v)))
+
+      val sets1_3 = set1.union(set3)
+      Array(8, 9, 10, 11, 12, 14, 20, 100).foreach(v => assert(sets1_3.contains(v)))
     }
   }
 }

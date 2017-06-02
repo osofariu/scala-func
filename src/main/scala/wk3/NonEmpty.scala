@@ -13,21 +13,6 @@ class NonEmpty(v: Int, left: IntSet, right: IntSet) extends IntSet {
     else this
   }
   override def union(otherSet: IntSet): IntSet = {
-    println("this set: " + this)
-    println("otherSet: " + otherSet + "\n")
-    otherSet.union(left).union(right).incl(v)
-  }
-
-  override def toScalaSet: Set[Int] = {
-    left.toScalaSet + v ++ right.toScalaSet
-  }
-
-  override def toString: String =
-    prettySet(left) + "<" + v.toString + ">" + prettySet(right)
-
-  def prettySet(set: IntSet): String = {
-    if (set.toScalaSet.isEmpty) "()"
-    else if(set.toScalaSet.size == 1) "<" + set.toScalaSet.toList.last + ">"
-    else "(" + set.toString + ")"
+    left union otherSet union right incl v
   }
 }
